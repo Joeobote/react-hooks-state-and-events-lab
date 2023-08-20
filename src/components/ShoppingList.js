@@ -1,7 +1,19 @@
 import React from "react";
 import Item from "./Item";
 
+
 function ShoppingList({ items }) {
+
+  const [selectedCategory, setSelectedCategory] = useState('');
+
+  const handleCategoryChange = event => {
+    setSelectedCategory(event.target.value);
+  };
+
+  const filteredItems = selectedCategory
+    ? items.filter(item => item.category === selectedCategory)
+    : items;
+
   return (
     <div className="ShoppingList">
       <div className="Filter">
